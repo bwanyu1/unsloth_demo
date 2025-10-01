@@ -1,0 +1,14 @@
+services:
+  dev:
+    build: .
+    volumes:
+      - ./app:/workspace/app
+      - ./data:/workspace/data
+    working_dir: /workspace/app
+    environment:
+      PYTHONPATH: /workspace/app
+      UV_LINK_MODE: copy
+    # 常駐させるためのダミープロセス
+    command: ["sleep", "infinity"]
+    tty: true
+    stdin_open: true
